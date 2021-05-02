@@ -19,6 +19,7 @@ import br.com.moip.Moip;
 import br.com.moip.auth.Authentication;
 import br.com.moip.auth.BasicAuth;
 import br.com.moip.models.Setup;
+import springfox.documentation.annotations.ApiIgnore;
 
 import static br.com.moip.helpers.PayloadFactory.payloadFactory;
 import static br.com.moip.helpers.PayloadFactory.value;
@@ -38,7 +39,7 @@ public class AlunoController {
 	public List<AlunoDTO> getAlunos() {
 		return alunoService.getAlunos();
 	}
-	
+	@ApiIgnore
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public AlunoDTO criarAluno(
@@ -49,7 +50,7 @@ public class AlunoController {
     	novoAluno.setIdMoip(moipId);
         return alunoService.criarAluno(novoAluno);
     }
-    
+    @ApiIgnore
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletarAluno(

@@ -30,8 +30,9 @@ public class AlunoControllerTest {
 	}
 	
 	@Test
-	public void DeveRetornarTodosAlunos() throws Exception {
+	public void DeveCriarAluno() throws Exception {
 		AlunoController alunoController = new AlunoController(alunoService);
+		
 		List<AlunoDTO> alunoList = alunoController.getAlunos();
 
 		Assertions.assertEquals(1, alunoList.size());

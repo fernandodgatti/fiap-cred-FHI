@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.fhi.fiapcredito.dto.PedidoDTO;
 import br.com.fhi.fiapcredito.dto.NovoPedidoDTO;
 import br.com.fhi.fiapcredito.service.PedidoService;
+import springfox.documentation.annotations.ApiIgnore;
 
 
 @RestController
@@ -38,6 +39,7 @@ public class PedidoController {
 		return pedidoService.criarPedido(novoPedido);
 	}
 
+	@ApiIgnore
 	@DeleteMapping("{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deletarAluno(@PathVariable String id) {
