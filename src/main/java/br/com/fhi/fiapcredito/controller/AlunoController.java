@@ -35,15 +35,30 @@ public class AlunoController {
 	}
 
 	@GetMapping
-	public List<AlunoDTO> getMusicas() {
+	public List<AlunoDTO> getAlunos() {
 		return alunoService.getAlunos();
 	}
 	
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public AlunoDTO criarMusica(
+    public AlunoDTO criarAluno(
             @RequestBody AlunoDTO novoAluno
     ) {
+    	String moipId = gerarMoipId(novoAluno);
+    	
+    	novoAluno.setIdMoip(moipId);
+        return alunoService.criarAluno(novoAluno);
+    }
+    
+    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletarAluno(
+            @PathVariable String id
+    ){
+        alunoService.deletarAluno(id);
+    }
+    
+    private String gerarMoipId (AlunoDTO novoAluno) {
     	String token = "QHSDKTLIMA7MTNCLZWAFXSLNUTDCSKIZ";
     	String key = "7JP4ONJAYNFNYSKGM9ZQVCNV2UYCLKBUBAG1WFQS";
     	Authentication auth = new BasicAuth(token, key);
@@ -66,16 +81,7 @@ public class AlunoController {
     	        value("phone", phone)
     	);
     	Map<String, Object> responseCreation = Moip.API.customers().create(customerRequestBody, setup);
-    	novoAluno.setIdMoip(responseCreation.get("id").toString());
-        return alunoService.criarAluno(novoAluno);
-    }
-    
-    @DeleteMapping("{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletarAluno(
-            @PathVariable String id
-    ){
-        alunoService.deletarAluno(id);
+    	return responseCreation.get("id").toString();
     }
 	
 

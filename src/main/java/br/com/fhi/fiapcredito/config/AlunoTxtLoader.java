@@ -59,7 +59,7 @@ public class AlunoTxtLoader implements ApplicationRunner {
 		try (Stream<String> lines = Files.lines(getFilePath())) {
 			System.out.println("Adicionando clientes na base do moip!");
 			System.out.println(
-					"Por conta do tamanho da base de dados os cadastros este processo pode demorar alguns minutos, você pode ir consultando aos poucos os clientes gerados na base que serão disponibilizados aos poucos!");
+					"Por conta do tamanho da base de dados este processo pode demorar alguns minutos, você pode ir consultando os clientes gerados na base que serão disponibilizados aos poucos!");
 			lines.filter(line -> !line.startsWith("-")).filter(line -> !line.isBlank())
 					.filter(line -> line.length() == 55).forEach(line -> {
 						String nome = line.substring(0, 40).replaceAll("\\s+$", "");

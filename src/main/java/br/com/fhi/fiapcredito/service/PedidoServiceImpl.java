@@ -66,7 +66,7 @@ public class PedidoServiceImpl implements PedidoService {
 
 		Map<String, Object> amount = payloadFactory(value("currency", "BRL"));
 		Map<String, Object> product1 = payloadFactory(value("product", "Cartão FIAP"), value("quantity", 1),
-				value("price", 100));
+				value("price", 10000));
 		List items = new ArrayList();
 		items.add(product1);
 		Map<String, Object> customer = payloadFactory(value("id", codigoClienteMoip));
