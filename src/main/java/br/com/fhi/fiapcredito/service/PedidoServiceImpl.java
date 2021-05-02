@@ -35,20 +35,14 @@ public class PedidoServiceImpl implements PedidoService {
 	public List<PedidoDTO> getPedidos() {
 		List<Pedido> pedidoList;
 		pedidoList = pedidoRepository.findAll();
-		System.out.println("CAIU AQUI");
-		System.out.println(pedidoList);
-
 		return pedidoList.stream().map(PedidoDTO::new).collect(Collectors.toList());
 
 	}
 
 	@Override
 	public PedidoDTO criarPedido(NovoPedidoDTO novoPedidoDTO) {
-		System.out.println("CHAMOU A CRIAR");
 		String codigoPedidoMoip = enviarPedidoMoip(novoPedidoDTO.getCodigoClienteMoip());
-		System.out.println("codigo pedido moip: " + codigoPedidoMoip);
 		Pedido pedido = new Pedido(novoPedidoDTO.getCodigoPedido(), codigoPedidoMoip);
-		System.out.println(pedido);
 		Pedido pedidoSalvo = pedidoRepository.save(pedido);
 		return new PedidoDTO(pedidoSalvo);
 	}

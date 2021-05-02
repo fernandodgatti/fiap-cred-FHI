@@ -1,6 +1,5 @@
 package br.com.fhi.fiapcredito.dto;
 
-import br.com.fhi.fiapcredito.entity.Aluno;
 import br.com.fhi.fiapcredito.entity.Pedido;
 
 public class PedidoDTO {
