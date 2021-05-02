@@ -10,7 +10,8 @@ Já a escolha por JPA + MYSQL foi pela facilidade de configuração local.
 As propriedades de acesso ao banco de dados estão disponíveis no arquivo application.yml, 
 você poderá alterar a porta de execução da aplicação e o local do arquivo temporário do banco de dados.
 
-'server:
+````Java
+server:
   port: 8084
 
 spring:
@@ -20,9 +21,20 @@ spring:
     password: fiap
   jpa:
     hibernate:
-      ddl-auto: update'
+      ddl-auto: update
+````
       
 ## Emissão de Extrato do Aluno 
+Para emissão do extrato do aluno, necessário fazer uma requisição(GET) com *basic authorization utilizando o seguinte endpoint com QueryString:
+````
+https://sandbox.moip.com.br/v2/orders?q=NOME+DO+ALUNO
+````
+* As informações do basic authorization se encontram no arquivo txt que foi enviado no portal da FIAP
+
+## SWAGGER
+````
+http://localhost:8084/swagger-ui/index.html#/
+````
 
 ---------------------------------------
 
