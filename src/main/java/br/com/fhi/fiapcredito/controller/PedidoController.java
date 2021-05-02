@@ -38,7 +38,7 @@ public class PedidoController {
 
 	@DeleteMapping("{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void deletarAluno(@PathVariable int id) {
+	public void deletarAluno(@PathVariable String id) {
 		pedidoService.deletarPedido(id);
 	}
 

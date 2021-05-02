@@ -7,8 +7,8 @@ import br.com.fhi.fiapcredito.dto.AlunoDTO;
 public interface AlunoService {
 	
 	List<AlunoDTO> getAlunos();
-	AlunoDTO getAlunoByRa(int Ra);
+	AlunoDTO getAlunoByRa(String Ra);
 	AlunoDTO criarAluno(AlunoDTO novoAluno);
-    void deletarAluno(int Ra);
+    void deletarAluno(String Ra);
 
 }

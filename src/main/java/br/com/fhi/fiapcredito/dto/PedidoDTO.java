@@ -12,21 +12,13 @@ public class PedidoDTO {
 	
 	public PedidoDTO(Pedido pedido) {
 		this.codigoPedido = pedido.getCodigoPedido();
-		this.aluno = pedido.getAluno();
-	}
+			}
 	
 	public int getCodigoPedido() {
 		return codigoPedido;
 	}
 	public void setCodigoPedido(int codigoPedido) {
 		this.codigoPedido = codigoPedido;
-	}
-	public Aluno getAluno() {
-		return aluno;
-	}
-	public void setAluno(Aluno aluno) {
-		this.aluno = aluno;
-	}
-	
+	}	
 
 }

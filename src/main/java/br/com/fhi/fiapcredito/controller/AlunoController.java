@@ -43,7 +43,7 @@ public class AlunoController {
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletarAluno(
-            @PathVariable int id
+            @PathVariable String id
     ){
         alunoService.deletarAluno(id);
     }

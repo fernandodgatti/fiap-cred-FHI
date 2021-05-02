@@ -4,7 +4,7 @@ import br.com.fhi.fiapcredito.entity.Aluno;
 
 public class AlunoDTO {
 	
-	private int registroAluno;
+	private String registroAluno;
 	private String nomeAluno;
 	private String codigoCartao;
 	
@@ -18,10 +18,16 @@ public class AlunoDTO {
 		this.codigoCartao = aluno.getCodigoCartao();
 	}	
 	
-	public int getRegistroAluno() {
+	public AlunoDTO(String nome, String ra, String codigoCartao) {
+		this.nomeAluno = nome;
+		this.registroAluno = ra;
+		this.codigoCartao = codigoCartao;
+	}
+	
+	public String getRegistroAluno() {
 		return registroAluno;
 	}
-	public void setRegistroAluno(int registroAluno) {
+	public void setRegistroAluno(String registroAluno) {
 		this.registroAluno = registroAluno;
 	}
 	public String getNomeAluno() {

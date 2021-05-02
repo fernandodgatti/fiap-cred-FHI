@@ -36,12 +36,12 @@ public class PedidoServiceImpl implements PedidoService {
 	}
 
 	@Override
-	public void deletarPedido(int id) {
+	public void deletarPedido(String id) {
 		findPedidoById(id);
 		pedidoRepository.deleteById(id);
 	}
 
-	private Pedido findPedidoById(int id) {
+	private Pedido findPedidoById(String id) {
 		return pedidoRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 	}
 

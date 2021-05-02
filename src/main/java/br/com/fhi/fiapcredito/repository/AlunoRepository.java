@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.fhi.fiapcredito.entity.Aluno;
 
-public interface AlunoRepository extends JpaRepository<Aluno, Integer> {
+public interface AlunoRepository extends JpaRepository<Aluno, String> {
 
 	/*@Query(value = "select * from Aluno a where a.nome_aluno = :nome")
 	List<Aluno> buscarAlunoPorNome(String nome);*/

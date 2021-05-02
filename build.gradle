@@ -19,6 +19,8 @@ dependencies {
 
 	implementation 'io.springfox:springfox-boot-starter:3.0.0'
 	implementation 'com.h2database:h2:1.4.197'
+	
+	implementation group: 'br.com.moip', name: 'sdk-java', version: '1.1.0'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

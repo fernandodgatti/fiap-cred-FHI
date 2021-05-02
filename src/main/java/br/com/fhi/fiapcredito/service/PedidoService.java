@@ -8,6 +8,6 @@ public interface PedidoService {
 	
 	List<PedidoDTO> getPedidos();
 	PedidoDTO criarPedido(PedidoDTO novoPedido);
-    void deletarPedido(int id);
+    void deletarPedido(String id);
 
 }

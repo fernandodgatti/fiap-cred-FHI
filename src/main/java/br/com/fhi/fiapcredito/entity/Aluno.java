@@ -6,7 +6,6 @@ import java.util.Set;
 import javax.persistence.*;
 
 import br.com.fhi.fiapcredito.dto.AlunoDTO;
-import br.com.fhi.fiapcredito.entity.Pedido;
 
 @Entity
 @Table(name = "TB_ALUNO")
@@ -14,16 +13,13 @@ public class Aluno {
 	
 	@Id
 	@Column(name = "registro_aluno", nullable = false)
-	private int registroAluno;
+	private String registroAluno;
 	
 	@Column(name = "nome_aluno", nullable = false)
 	private String nomeAluno;
 	
 	@Column(name = "codigo_cartao", nullable = false)
 	private String codigoCartao;
-	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "aluno")
-	private Set<Pedido> pedidos = new LinkedHashSet<Pedido>();
 	
 	public Aluno() {}
 	
@@ -41,11 +37,11 @@ public class Aluno {
 		this.nomeAluno = nomeAluno;
 	}
 
-	public int getRegistroAluno() {
+	public String getRegistroAluno() {
 		return registroAluno;
 	}
 
-	public void setRegistroAluno(int registroAluno) {
+	public void setRegistroAluno(String registroAluno) {
 		this.registroAluno = registroAluno;
 	}
 

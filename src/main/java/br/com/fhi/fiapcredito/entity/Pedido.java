@@ -19,17 +19,12 @@ public class Pedido {
 	@Column(name = "id_pedido", nullable = false)
 	private int codigoPedido;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "registro_aluno")
-	private Aluno aluno;
-
 	public Pedido() {
 	}
 
 	public Pedido(PedidoDTO pedidoDTO) {
 		this.codigoPedido = pedidoDTO.getCodigoPedido();
-		this.aluno = pedidoDTO.getAluno();
-
+		
 	}
 
 	public int getCodigoPedido() {
@@ -38,14 +33,6 @@ public class Pedido {
 
 	public void setCodigoPedido(int codigoPedido) {
 		this.codigoPedido = codigoPedido;
-	}
-
-	public Aluno getAluno() {
-		return aluno;
-	}
-
-	public void setRegistroAluno(Aluno aluno) {
-		this.aluno = aluno;
 	}
 
 }

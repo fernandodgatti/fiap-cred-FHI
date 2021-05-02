@@ -34,7 +34,7 @@ public class AlunoServiceImpl implements AlunoService {
 	}
 	
 	@Override
-    public AlunoDTO getAlunoByRa(int ra) {
+    public AlunoDTO getAlunoByRa(String ra) {
         Aluno aluno = findAlunoByRa(ra);
         return new AlunoDTO(aluno);
     }
@@ -47,12 +47,12 @@ public class AlunoServiceImpl implements AlunoService {
     }
 	
 	@Override
-    public void deletarAluno(int ra) {
+    public void deletarAluno(String ra) {
 		findAlunoByRa(ra);
         alunoRepository.deleteById(ra);
     }
 
-	private Aluno findAlunoByRa(int ra) {
+	private Aluno findAlunoByRa(String ra) {
 		return alunoRepository.findById(ra).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 	}
 
