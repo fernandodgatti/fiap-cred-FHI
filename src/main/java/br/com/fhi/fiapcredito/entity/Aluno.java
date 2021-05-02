@@ -1,8 +1,5 @@
 package br.com.fhi.fiapcredito.entity;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
-
 import javax.persistence.*;
 
 import br.com.fhi.fiapcredito.dto.AlunoDTO;

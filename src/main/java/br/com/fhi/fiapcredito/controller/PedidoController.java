@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import br.com.fhi.fiapcredito.dto.PedidoDTO;
+import br.com.fhi.fiapcredito.dto.NovoPedidoDTO;
 import br.com.fhi.fiapcredito.service.PedidoService;
+
 
 @Controller
 @RequestMapping("pedidos")
@@ -32,7 +34,7 @@ public class PedidoController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public PedidoDTO criarMusica(@RequestBody PedidoDTO novoPedido) {
+	public PedidoDTO criarMusica(@RequestBody NovoPedidoDTO novoPedido) {
 		return pedidoService.criarPedido(novoPedido);
 	}
 
@@ -41,5 +43,5 @@ public class PedidoController {
 	public void deletarAluno(@PathVariable String id) {
 		pedidoService.deletarPedido(id);
 	}
-
+	
 }

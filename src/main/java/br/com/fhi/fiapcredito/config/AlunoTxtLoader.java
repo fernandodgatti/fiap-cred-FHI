@@ -16,8 +16,6 @@ import org.springframework.stereotype.Component;
 
 import java.net.URISyntaxException;
 
-import br.com.fhi.fiapcredito.dto.AlunoDTO;
-import br.com.fhi.fiapcredito.service.AlunoService;
 import br.com.moip.Moip;
 import br.com.moip.auth.Authentication;
 import br.com.moip.auth.BasicAuth;
@@ -48,7 +46,7 @@ public class AlunoTxtLoader implements ApplicationRunner {
 		Map<String, Object> taxDocument = payloadFactory(value("type", "CPF"), value("number", "10013390023"));
 		Map<String, Object> phone = payloadFactory(value("countryCode", "55"), value("areaCode", "11"),
 				value("number", "22226842"));
-		Map<String, Object> customerRequestBody = payloadFactory(value("ownId", gerador.nextInt(100000)),
+		Map<String, Object> customerRequestBody = payloadFactory(value("ownId", gerador.nextInt(10000000)),
 				value("fullname", nome), value("email", "test.moip@mail.com"), value("birthDate", "1980-5-10"),
 				value("taxDocument", taxDocument), value("phone", phone));
 		Map<String, Object> responseCreation = Moip.API.customers().create(customerRequestBody, setup);
