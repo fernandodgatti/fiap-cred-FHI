@@ -29,7 +29,6 @@ import static br.com.moip.helpers.PayloadFactory.value;
 public class AlunoController {
 
 	private final AlunoService alunoService;
-	
 
 	public AlunoController(AlunoService alunoService) {
 		this.alunoService = alunoService;
@@ -39,51 +38,37 @@ public class AlunoController {
 	public List<AlunoDTO> getAlunos() {
 		return alunoService.getAlunos();
 	}
+
 	@ApiIgnore
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public AlunoDTO criarAluno(
-            @RequestBody AlunoDTO novoAluno
-    ) {
-    	String moipId = gerarMoipId(novoAluno);
-    	
-    	novoAluno.setIdMoip(moipId);
-        return alunoService.criarAluno(novoAluno);
-    }
-    @ApiIgnore
-    @DeleteMapping("{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletarAluno(
-            @PathVariable String id
-    ){
-        alunoService.deletarAluno(id);
-    }
-    
-    private String gerarMoipId (AlunoDTO novoAluno) {
-    	String token = "QHSDKTLIMA7MTNCLZWAFXSLNUTDCSKIZ";
-    	String key = "7JP4ONJAYNFNYSKGM9ZQVCNV2UYCLKBUBAG1WFQS";
-    	Authentication auth = new BasicAuth(token, key);
-    	Setup setup = new Setup().setAuthentication(auth).setEnvironment(Setup.Environment.SANDBOX);
-    	Map<String, Object> taxDocument = payloadFactory(
-    	        value("type", "CPF"),
-    	        value("number", "10013390023")
-    	);
-    	Map<String, Object> phone = payloadFactory(
-    	        value("countryCode", "55"),
-    	        value("areaCode", "11"),
-    	        value("number", "22226842")
-    	);
-    	Map<String, Object> customerRequestBody = payloadFactory(
-    	        value("ownId", novoAluno.getRegistroAluno()),
-    	        value("fullname", novoAluno.getNomeAluno()),
-    	        value("email", "test.moip@mail.com"),
-    	        value("birthDate", "1980-5-10"),
-    	        value("taxDocument", taxDocument),
-    	        value("phone", phone)
-    	);
-    	Map<String, Object> responseCreation = Moip.API.customers().create(customerRequestBody, setup);
-    	return responseCreation.get("id").toString();
-    }
-	
+	@PostMapping
+	@ResponseStatus(HttpStatus.CREATED)
+	public AlunoDTO criarAluno(@RequestBody AlunoDTO novoAluno) {
+		String moipId = gerarMoipId(novoAluno);
+
+		novoAluno.setIdMoip(moipId);
+		return alunoService.criarAluno(novoAluno);
+	}
+
+	@ApiIgnore
+	@DeleteMapping("{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void deletarAluno(@PathVariable String id) {
+		alunoService.deletarAluno(id);
+	}
+
+	private String gerarMoipId(AlunoDTO novoAluno) {
+		String token = "QHSDKTLIMA7MTNCLZWAFXSLNUTDCSKIZ";
+		String key = "7JP4ONJAYNFNYSKGM9ZQVCNV2UYCLKBUBAG1WFQS";
+		Authentication auth = new BasicAuth(token, key);
+		Setup setup = new Setup().setAuthentication(auth).setEnvironment(Setup.Environment.SANDBOX);
+		Map<String, Object> taxDocument = payloadFactory(value("type", "CPF"), value("number", "10013390023"));
+		Map<String, Object> phone = payloadFactory(value("countryCode", "55"), value("areaCode", "11"),
+				value("number", "22226842"));
+		Map<String, Object> customerRequestBody = payloadFactory(value("ownId", novoAluno.getRegistroAluno()),
+				value("fullname", novoAluno.getNomeAluno()), value("email", "test.moip@mail.com"),
+				value("birthDate", "1980-5-10"), value("taxDocument", taxDocument), value("phone", phone));
+		Map<String, Object> responseCreation = Moip.API.customers().create(customerRequestBody, setup);
+		return responseCreation.get("id").toString();
+	}
 
 }

@@ -26,7 +26,15 @@ class FiapcreditoApplicationTests {
 					.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$", hasSize(1)));
-
+	}
+	
+	@Test
+	void deveRetornarTodosPedidos() throws Exception {
+		mockMvc.perform(
+				MockMvcRequestBuilders.get("/pedidos")
+					.contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk())
+				.andExpect(jsonPath("$", hasSize(1)));
 	}
 
 }
