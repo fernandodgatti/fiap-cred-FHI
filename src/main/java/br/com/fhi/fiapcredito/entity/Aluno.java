@@ -21,12 +21,17 @@ public class Aluno {
 	@Column(name = "codigo_cartao", nullable = false)
 	private String codigoCartao;
 	
+	@Column(name = "id_moip", nullable = false)
+	private String idMoip;
+	
 	public Aluno() {}
 	
 	public Aluno(AlunoDTO alunoDTO) {
 		this.registroAluno = alunoDTO.getRegistroAluno();
 		this.nomeAluno = alunoDTO.getNomeAluno();
 		this.codigoCartao = alunoDTO.getCodigoCartao();
+		this.idMoip = alunoDTO.getIdMoip();
+
 	}
 	
 	public String getNomeAluno() {
@@ -52,7 +57,12 @@ public class Aluno {
 	public void setCodigoCartao(String codigoCartao) {
 		this.codigoCartao = codigoCartao;
 	}
-
+	public String getIdMoip() {
+		return idMoip;
+	}
+	public void setIdMoip(String idMoip) {
+		this.idMoip = idMoip;
+	}
 	
 	
 

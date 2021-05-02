@@ -1,6 +1,7 @@
 package br.com.fhi.fiapcredito.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,7 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.fhi.fiapcredito.dto.AlunoDTO;
 import br.com.fhi.fiapcredito.service.AlunoService;
+import br.com.moip.Moip;
+import br.com.moip.auth.Authentication;
+import br.com.moip.auth.BasicAuth;
+import br.com.moip.models.Setup;
 
+import static br.com.moip.helpers.PayloadFactory.payloadFactory;
+import static br.com.moip.helpers.PayloadFactory.value;
 
 @RestController
 @RequestMapping("alunos")
@@ -37,6 +44,29 @@ public class AlunoController {
     public AlunoDTO criarMusica(
             @RequestBody AlunoDTO novoAluno
     ) {
+    	String token = "QHSDKTLIMA7MTNCLZWAFXSLNUTDCSKIZ";
+    	String key = "7JP4ONJAYNFNYSKGM9ZQVCNV2UYCLKBUBAG1WFQS";
+    	Authentication auth = new BasicAuth(token, key);
+    	Setup setup = new Setup().setAuthentication(auth).setEnvironment(Setup.Environment.SANDBOX);
+    	Map<String, Object> taxDocument = payloadFactory(
+    	        value("type", "CPF"),
+    	        value("number", "10013390023")
+    	);
+    	Map<String, Object> phone = payloadFactory(
+    	        value("countryCode", "55"),
+    	        value("areaCode", "11"),
+    	        value("number", "22226842")
+    	);
+    	Map<String, Object> customerRequestBody = payloadFactory(
+    	        value("ownId", novoAluno.getRegistroAluno()),
+    	        value("fullname", novoAluno.getNomeAluno()),
+    	        value("email", "test.moip@mail.com"),
+    	        value("birthDate", "1980-5-10"),
+    	        value("taxDocument", taxDocument),
+    	        value("phone", phone)
+    	);
+    	Map<String, Object> responseCreation = Moip.API.customers().create(customerRequestBody, setup);
+    	novoAluno.setIdMoip(responseCreation.get("id").toString());
         return alunoService.criarAluno(novoAluno);
     }
     
