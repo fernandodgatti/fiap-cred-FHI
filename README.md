@@ -45,7 +45,7 @@ http://localhost:8084/swagger-ui/index.html#/
 | Henrique Abdala | [henriqueabdala][Abdala] |
 | Iller Boromello | [boromello][Boromello] |
 
-Professor Rafael Matsuyama
+Professor Fabio Tadashi Miyasato
 
 Licença
 ----
