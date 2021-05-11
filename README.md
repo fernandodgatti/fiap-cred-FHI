@@ -39,7 +39,7 @@ http://localhost:8084/swagger-ui/index.html#/
 ---------------------------------------
 
 ## Colaboradores
-| Colaborador | Github |
+| Colaborador | Github | Telefone |
 | ------ | ------ |
 | Fernando Gatti | [fernandodgatti][Gatti] | 11 953448553 |
 | Henrique Abdala | [henriqueabdala][Abdala] | 11 975581678 |
