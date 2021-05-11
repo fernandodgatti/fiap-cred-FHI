@@ -41,8 +41,8 @@ http://localhost:8084/swagger-ui/index.html#/
 ## Colaboradores
 | Colaborador | Github |
 | ------ | ------ |
-| Fernando Gatti | [fernandodgatti][Gatti] |
-| Henrique Abdala | [henriqueabdala][Abdala] |
+| Fernando Gatti | [fernandodgatti][Gatti] | 11 953448553
+| Henrique Abdala | [henriqueabdala][Abdala] | 11 975581678
 | Iller Boromello | [boromello][Boromello] |
 
 Professor Fabio Tadashi Miyasato
