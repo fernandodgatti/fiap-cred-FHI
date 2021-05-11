@@ -70,7 +70,7 @@ public class PedidoServiceImpl implements PedidoService {
 		List items = new ArrayList();
 		items.add(product1);
 		Map<String, Object> customer = payloadFactory(value("id", codigoClienteMoip));
-		Map<String, Object> order = payloadFactory(value("ownId", gerador.nextInt(1000000)), value("amount", amount),
+		Map<String, Object> order = payloadFactory(value("ownId", gerador.nextInt(10000000)), value("amount", amount),
 				value("items", items), value("customer", customer));
 		Map<String, Object> responseCreation = Moip.API.orders().create(order, setup);
 		return responseCreation.get("id").toString();
